@@ -7,6 +7,7 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import sg.edu.nus.sg.d19lecture.model.Employee;
@@ -64,6 +65,10 @@ public class RedisConfig {
     public RedisTemplate<String, Employee> redisEmployeeTemplate() {
         RedisTemplate<String, Employee> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnFactory());
+        // redisTemplate.setKeySerializer(new StringRedisSerializer());
+        // redisTemplate.setValueSerializer(new StringRedisSerializer());
+        // redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        // redisTemplate.setHashValueSerializer(new JdkSerializationRedisSerializer());
 
         return redisTemplate;
     }

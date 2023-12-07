@@ -1,5 +1,8 @@
 package sg.edu.nus.sg.d19lecture.repo;
 
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.stereotype.Repository;
@@ -22,9 +25,17 @@ public class EmployeeRepo {
         hOps.put(hashRef, e.getEmployeeId().toString(), e);
     }
     
-    public Employee getRecord(Integer id) {
-        Employee e = hOps.get(hashRef, String.valueOf(id));
+    public Employee getRecord(String id) {
+        Employee e = hOps.get(hashRef, id);
         return e;
+    }
+
+    public Map<String, Employee> getAll() {
+
+        Map<String, Employee> mapList = hOps.entries(hashRef);
+        //mapList.values().stream().collect(Collectors.toList());
+
+        return mapList;
     }
 
 }
