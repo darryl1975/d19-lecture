@@ -47,57 +47,57 @@ public class D19LectureApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		// String pathFileName = "c:\\data\\employees.json"; // for windows users
-		// pathFileName = "/Users/Darryl/data/employees.json";
+		String pathFileName = "c:\\data\\employees.json"; // for windows users
+		pathFileName = "/Users/Darryl/data/employees.json";
 
-		// File file = new File(pathFileName);
-		// InputStream is = new FileInputStream(file);
+		File file = new File(pathFileName);
+		InputStream is = new FileInputStream(file);
 
-		// StringBuilder resultStringBuilder = new StringBuilder();
+		StringBuilder resultStringBuilder = new StringBuilder();
 
-		// try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
-		// 	String line = "";
-		// 	while ((line = br.readLine()) != null) {
-		// 		resultStringBuilder.append(line);
-		// 	}
-		// }
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				resultStringBuilder.append(line);
+			}
+		}
 
-		// String data = resultStringBuilder.toString();
-		// // System.out.println(data);
+		String data = resultStringBuilder.toString();
+		// System.out.println(data);
 
-		// JSONParser jsonParser = new JSONParser();
-		// Object object = jsonParser.parse(data);
+		JSONParser jsonParser = new JSONParser();
+		Object object = jsonParser.parse(data);
 
-		// JSONArray jsonArray = (JSONArray) object;
-		// // System.out.println("jsonArray size: " + jsonArray.size());
-		// // System.out.println("jsonArray list of objects: " + jsonArray);
+		JSONArray jsonArray = (JSONArray) object;
+		// System.out.println("jsonArray size: " + jsonArray.size());
+		// System.out.println("jsonArray list of objects: " + jsonArray);
 
-		// List<Employee> employees = new ArrayList<>();
-		// jsonArray.forEach(emp -> {
-		// 	// System.out.println(emp);
+		List<Employee> employees = new ArrayList<>();
+		jsonArray.forEach(emp -> {
+			// System.out.println(emp);
 
-		// 	// call the parseEmployeeObject function
-		// 	Employee emp1 = parseEmployeeObject((JSONObject) emp);
-		// 	employees.add(emp1);
-		// });
+			// call the parseEmployeeObject function
+			Employee emp1 = parseEmployeeObject((JSONObject) emp);
+			employees.add(emp1);
+		});
 
-		// System.out.println("List of employees: " + employees);
+		System.out.println("List of employees: " + employees);
 
-		// for (Employee empl : employees) {
-		// 	empRepo.saveRecord(empl);
-		// }
+		for (Employee empl : employees) {
+			empRepo.saveRecord(empl);
+		}
 
-		// Map<String, Employee> mapList = empRepo.getAll();
-		// System.out.println(mapList);
+		Map<String, Employee> mapList = empRepo.getAll();
+		System.out.println(mapList);
 
-		// Employee empRetrieved1 = empRepo.getRecord("12345");
-		// System.out.println("Retrieved employee: " + empRetrieved1);
+		Employee empRetrieved1 = empRepo.getRecord("12345");
+		System.out.println("Retrieved employee: " + empRetrieved1);
 
-		// Employee empRetrieved2 = empRepo.getRecord("12346");
-		// System.out.println("Retrieved employee: " + empRetrieved2);
+		Employee empRetrieved2 = empRepo.getRecord("12346");
+		System.out.println("Retrieved employee: " + empRetrieved2);
 
-		// Employee empRetrieved3 = empRepo.getRecord("12347");
-		// System.out.println("Retrieved employee: " + empRetrieved3);
+		Employee empRetrieved3 = empRepo.getRecord("12347");
+		System.out.println("Retrieved employee: " + empRetrieved3);
 
 		// ===================================================================//
 		// pathFileName = "/Users/Darryl/data/employee2.json";
@@ -120,7 +120,7 @@ public class D19LectureApplication implements CommandLineRunner {
 
 		// ======================================
 
-		bag.showBagType();
+		// bag.showBagType();
 		
 	}
 

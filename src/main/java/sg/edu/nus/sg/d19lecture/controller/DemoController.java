@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpSession;
 import sg.edu.nus.sg.d19lecture.model.Employee;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/demo")
@@ -29,4 +31,14 @@ public class DemoController {
 
         return "home";
     }
+
+    @GetMapping("/nextpage")
+    public String target(HttpSession session, Model model) {
+
+        List<Employee> employees = (List<Employee>) session.getAttribute("employees");
+        model.addAttribute("employees", employees);
+
+        return "target";
+    }
+    
 }

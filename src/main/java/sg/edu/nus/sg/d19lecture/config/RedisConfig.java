@@ -65,9 +65,9 @@ public class RedisConfig {
     public RedisTemplate<String, Employee> redisEmployeeTemplate() {
         RedisTemplate<String, Employee> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnFactory());
-        // redisTemplate.setKeySerializer(new StringRedisSerializer());
-        // redisTemplate.setValueSerializer(new StringRedisSerializer());
-        // redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
+        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         // redisTemplate.setHashValueSerializer(new JdkSerializationRedisSerializer());
 
         return redisTemplate;
