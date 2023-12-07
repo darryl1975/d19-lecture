@@ -21,7 +21,7 @@ public class D19LectureApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		String pathFileName = "c:\\data\\employees.json"; // for windows users
-		pathFileName = "//data";
+		pathFileName = "/Users/Darryl/data/employees.json";
 
 		File file = new File(pathFileName);
 		InputStream is = new FileInputStream(file);
@@ -29,8 +29,15 @@ public class D19LectureApplication implements CommandLineRunner {
 		StringBuilder resultStringBuilder = new StringBuilder();
 
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
-			
+			String line = "";
+			while((line = br.readLine()) != null) {
+				resultStringBuilder.append(line);
+			}
 		}
+
+		String data = resultStringBuilder.toString();
+		System.out.println(data);
+
 	}
 
 }
