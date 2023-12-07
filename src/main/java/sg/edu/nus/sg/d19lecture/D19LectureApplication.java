@@ -18,7 +18,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import jakarta.json.JsonValue;
 import sg.edu.nus.sg.d19lecture.model.Employee;
 import sg.edu.nus.sg.d19lecture.repo.EmployeeRepo;
 
@@ -88,15 +91,24 @@ public class D19LectureApplication implements CommandLineRunner {
 		Employee empRetrieved3 = empRepo.getRecord("12347");
 		System.out.println("Retrieved employee: " + empRetrieved3);
 
-
-		//===================================================================//
+		// ===================================================================//
 		pathFileName = "/Users/Darryl/data/employee2.json";
 
 		file = new File(pathFileName);
 		is = new FileInputStream(file);
 
+		List<Employee> lstEmployee = new ArrayList<>();
 		JsonReader jsonReader = Json.createReader(is);
-		
+		JsonArray jsonArray1 = jsonReader.readArray();
+		for (JsonValue jsonValue : jsonArray1) {
+			JsonObject jsonObject = jsonValue.asJsonObject();
+
+			Employee empl = new Employee();
+			empl.setEmployeeId(Integer.valueOf(jsonObject.get("employeeId").toString()));
+			empl.setEmployeeName(jsonObject.get("employeeName").toString());
+			lstEmployee.add(empl);
+		}
+		System.out.println("lstEmployee object: " + lstEmployee);
 	}
 
 	private Employee parseEmployeeObject(JSONObject jsonEmployee) {
